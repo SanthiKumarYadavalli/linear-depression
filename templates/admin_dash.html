@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Hostel Queries</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link rel="stylesheet" href="static/dash.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <a class="navbar-brand" href="index.html">RGUKT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
+        </li> -->
+
+        <li class="nav-item active">
+            <a class="nav-link" href="#hero">Dashboard<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="#about">Complaints Filed<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item active">
+            <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
+        </li>
+
+
+    </ul>
+      
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" id="c-status1" class="btn btn-warning">Administrator</button>
+        <button type="button" id="c-status2"  class="btn btn-light">Student</button>
+    </div>
+  </nav>
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+
+    <div class="container-fluid" data-aos="fade-up">
+      <div class="row justify-content-center">
+        <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1>Welcome {{ name }} to Admin Dashboard</h1>
+          <h2>Check the Complaints filed and their status</h2>
+
+        </div>
+        <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
+          <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      
+      <div class="container">
+        <h2>Complaints Received</h2><br><br>
+        <div class="row">
+          <table class="table table-hover" width="100%" cellspacing="40px" style="font-size:20px">
+            <tr class="table-light">
+              <th>S No</th>
+              <th>Complaint Type</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+            
+            {% for complaint in complaints %}
+            <tr class="table-light" onclick="window.location.href = '/complaint/{{complaint[0]}}';" style="cursor: pointer;">
+              <td>{{ loop.index }}</td>
+              <td><a href="/complaint/{{complaint[0]}}" style="text-decoration:none;color:black">{{ complaint[2] }}</td>
+              <td>{{ complaint[3] }}</td>
+              <td class="table-light">{{ complaint[5] }}</td>
+            </tr>
+          {% endfor %}
+          </table>
+          
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter">1</span>
+            <h6>Total Complaints</h6>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter">2</span>
+            <h6>Solved</h6>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter">1</span>
+            <h6>Under Progress</h6>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter">5</span>
+            <h6>Unsolved</h6>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Theme</h2>
+          <p>The purpose of this webpage is to provide the students an interactive page to fill their comlpaints and keep a track of them.It also provides a track of previous complaints filed </p>
+        </div>
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container" data-aos="fade-up">
+
+
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="info-box mb-4">
+              <i class="bx bx-map"></i>
+              <h3>Our Address</h3>
+              <a>RGUKT RK Valley, Vempalli,Kadapa 516330</a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6">
+            <div class="info-box  mb-4">
+              <i class="bx bx-envelope"></i>
+              <h3>Website</h3>
+              <a href="rgukt.in">rgukt.in</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h3>Linear Depression</h3>
+            <p>
+              Boys Hostel<br>
+              RK Valley-516330<br>
+              Kadapa <br><br>
+              <strong>Email:</strong><a href="mailto:rr200148@rguktrkv.ac.in" style="text-decoration:none;"> rr200148@rguktrkv.ac.in</a><br>
+            </p>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Dashboard</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Complaints</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact Info</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Reach Us</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Machine Learning Models</a></li>
+            </ul>
+          </div>
+
+    <div class="container">
+
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="static/main.js"></script>
+
+</body>
+
+</html>
