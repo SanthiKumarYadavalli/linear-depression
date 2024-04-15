@@ -83,5 +83,6 @@ def show_complaint(id_):
     db.update_complaint_status(id_, request.form['status'])
     return redirect(url_for("home"))
 
-# app.run(debug=True, host="0.0.0.0", port=8080)
-app.run(debug=True)
+
+if __name__ == "__main__":
+    app.run(debug=True)
