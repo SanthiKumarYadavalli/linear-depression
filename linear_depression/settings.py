@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'linear_depression.wsgi.application'
+WSGI_APPLICATION = 'linear_depression.wsgi.app'
 
 
 # Database
