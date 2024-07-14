@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xe0s&3@^uh(x&e(8l1f%=eilz4xv$bn64t!2^@@*6mpz!1%cl(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'linear_depression.wsgi.app'
+WSGI_APPLICATION = 'linear_depression.wsgi.application'
 
 
 # Database
