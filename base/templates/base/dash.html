@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <link rel="stylesheet" href="/static/dash.css">
+  <link rel="stylesheet" href="{% static 'styles/dash.css' %}">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
@@ -37,7 +39,7 @@
         </li>
 
         <li class="nav-item active">
-            <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="{% url 'users:logout-page'  %}">Logout<span class="sr-only">(current)</span></a>
         </li>
 
 
@@ -55,9 +57,9 @@
     <div class="container-fluid" data-aos="fade-up">
       <div class="row justify-content-center">
         <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
-          <h1>Welcome {{ name }} to Hostel Queries Dashboard</h1>
+          <h1>Welcome {{ user.first_name }} to Hostel Queries Dashboard</h1>
           <h2>Raise your complaints here by filling the form</h2>
-          <div><a href="/new_complaint" class="btn-get-started scrollto">Complaint</a></div>
+          <div><a href="{% url 'complaints:add-complaint' %}" class="btn-get-started scrollto">Complaint</a></div>
         </div>
         <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
           <img src="assets/img/hero-img.png" class="img-fluid animated" alt="">
@@ -67,105 +69,7 @@
 
   </section>
 
-  <main id="main">
-
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      
-      <div class="container">
-        <h2>Your Complaints</h2><br><br>
-        <div class="row">
-          <table class="table table-hover" width="100%" cellspacing="40px" style="font-size:20px">
-            <tr class="table-light">
-              <th>S No</th>
-              <th>Complaint Type</th>
-              <th>Description</th>
-              <th>Status</th>
-            </tr>
-            
-            {% for complaint in complaints %}
-              <tr>
-                <td>{{ loop.index }}</td>
-                <td><a href="/complaint/{{complaint[0]}}" style="text-decoration:none;color:black">{{ complaint[2] }}</td>
-                <td>{{ complaint[3] }}</td>
-                <td class="table-light">{{ complaint[-1] }}</td>
-              </tr>
-            {% endfor %}
-          </table>
-          
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container">
-
-        <div class="row counters">
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter">1</span>
-            <h6>Total Complaints</h6>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter">2</span>
-            <h6>Solved</h6>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter">1</span>
-            <h6>Under Progress</h6>
-          </div>
-
-          <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter">5</span>
-            <h6>Unsolved</h6>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Theme</h2>
-          <p>The purpose of this webpage is to provide the students an interactive page to fill their comlpaints and keep a track of them.It also provides a track of previous complaints filed </p>
-        </div>
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact section-bg">
-      <div class="container" data-aos="fade-up">
-
-
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Our Address</h3>
-              <a>RGUKT RK Valley, Vempalli,Kadapa 516330</a>
-            </div>
-          </div>
-
-          <div class="col-lg-6 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Website</h3>
-              <a href="rgukt.in">rgukt.in</a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
+{% include 'base/student_complaints.html' %}
 
   <!-- ======= Footer ======= -->
   <footer id="footer">
@@ -219,7 +123,7 @@
 
 
   <!-- Template Main JS File -->
-  <script src="static/main.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
 
 </body>
 

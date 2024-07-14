@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+
+
+{% block content %}
+{% if user.role %}
+{% include 'base/dash.html' %}
+{% else %}
+{% include 'base/admin_dash.html' %}
+{% endif %}
+
+{% endblock %}
