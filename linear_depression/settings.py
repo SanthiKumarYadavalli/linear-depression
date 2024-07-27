@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from datetime import timedelta
 import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-xe0s&3@^uh(x&e(8l1f%=eilz4xv$bn64t!2^@@*6mpz!1%cl('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split()
 
 
 # Application definition
@@ -95,7 +96,7 @@ WSGI_APPLICATION = 'linear_depression.wsgi.application'
 
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://testdb_oi5e_user:9TMD53NH9SNWaZcvhcgQodB6TzUInSJt@dpg-cqieg38gph6c738nvnk0-a/testdb_oi5e')
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
 
 
